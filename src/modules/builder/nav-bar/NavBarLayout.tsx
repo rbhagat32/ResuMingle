@@ -8,7 +8,7 @@ import {
   useTools,
 } from '@/stores/skills';
 import { ChangeEvent, useCallback, useRef, useState } from 'react';
-import { NavBarActions, NavBarMenu } from './atoms';
+import { NavBarActions, NavBarMenu, StyledButton } from './atoms';
 
 import { Toast } from '@/helpers/common/atoms/Toast';
 import { AVAILABLE_TEMPLATES } from '@/helpers/constants';
@@ -74,7 +74,7 @@ const NavBarLayout = () => {
 
     reader.readAsText(fileObj);
 
-    event.target.value = ''; // To read the same file
+    event.target.value = '';
 
     reader.onload = (e) => {
       if (typeof e.target?.result === 'string') {
@@ -132,6 +132,14 @@ const NavBarLayout = () => {
           <NavMenuItem caption="Colours" popoverChildren={<ThemeSelect />} />
         </NavBarMenu>
         <NavBarActions>
+          <Link
+            href="/auth"
+            onClick={() => localStorage.setItem('loggedIn', 'false')}
+            passHref={true}
+          >
+            <StyledButton variant="text">Logout</StyledButton>
+          </Link>
+
           <PrintResume />
         </NavBarActions>
       </div>

@@ -1,6 +1,5 @@
 import { NavBarActions, StyledButton } from '../builder/nav-bar/atoms';
 import { AnimationGeneratorType, motion, useAnimation } from 'framer-motion';
-
 import { BsGithub } from 'react-icons/bs';
 import { Button } from '@mui/material';
 import FeatureSection from './components/Feature';
@@ -35,11 +34,14 @@ const HomeLayout = () => {
             </div>
           </NavBarActions>
           <NavBarActions>
+            <Link href="/auth" passHref={true}>
+              <StyledButton variant="text">Login / SignUp</StyledButton>
+            </Link>
             <Link href="#about-us" passHref={true}>
               <StyledButton variant="text">About us</StyledButton>
             </Link>
             <a
-              href={'https://github.com/rbhagat32/Resume-SE-Project'}
+              href={'https://github.com/rbhagat32/ResuMingle'}
               target="_blank"
               rel="noopener noreferrer"
             >
