@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { BsGithub } from 'react-icons/bs';
 import { NavBarActions } from '../modules/builder/nav-bar/atoms';
 import { useRouter } from 'next/router';
+import { toast } from 'sonner';
 
 const auth = () => {
   const router = useRouter();
@@ -30,6 +31,7 @@ const auth = () => {
 
     setTimeout(() => {
       router.push('/builder');
+      toast.success('Welcome to ResuMingle!');
       setLoading(false);
     }, 2000);
   };

@@ -3,6 +3,7 @@ import Head from 'next/head';
 import BuilderLayout from '@/modules/builder/BuilderLayout';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { toast } from 'sonner';
 
 const BuilderPage: NextPage = () => {
   let isLoggedIn;
@@ -12,7 +13,7 @@ const BuilderPage: NextPage = () => {
     isLoggedIn = localStorage.getItem('loggedIn') === 'true';
 
     if (isLoggedIn !== true) {
-      alert('Please Login / SignUp to start building!');
+      toast.error('Please Login / SignUp to continue!');
       router.push('/auth');
     }
   }, []);

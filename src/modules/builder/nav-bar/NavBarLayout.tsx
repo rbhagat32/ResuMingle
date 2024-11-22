@@ -9,7 +9,6 @@ import {
 } from '@/stores/skills';
 import { ChangeEvent, useCallback, useRef, useState } from 'react';
 import { NavBarActions, NavBarMenu, StyledButton } from './atoms';
-
 import { Toast } from '@/helpers/common/atoms/Toast';
 import { AVAILABLE_TEMPLATES } from '@/helpers/constants';
 import DEFAULT_RESUME_JSON from '@/helpers/constants/resume-data.json';
@@ -26,6 +25,7 @@ import { NavMenuItem } from './components/MenuItem';
 import { PrintResume } from './components/PrintResume';
 import { TemplateSelect } from './components/TemplateSelect';
 import { ThemeSelect } from './components/ThemeSelect';
+import { toast } from 'sonner';
 
 const TOTAL_TEMPLATES_AVAILABLE = Object.keys(AVAILABLE_TEMPLATES).length;
 
@@ -118,6 +118,11 @@ const NavBarLayout = () => {
     };
   }, []);
 
+  const logout = () => {
+    localStorage.setItem('loggedIn', 'false');
+    toast.success('Logged Out Successfully!');
+  };
+
   return (
     <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 pl-5 pr-4 items-center shadow-level-8dp z-20 print:hidden">
       <Link href="/">
@@ -132,11 +137,7 @@ const NavBarLayout = () => {
           <NavMenuItem caption="Colours" popoverChildren={<ThemeSelect />} />
         </NavBarMenu>
         <NavBarActions>
-          <Link
-            href="/auth"
-            onClick={() => localStorage.setItem('loggedIn', 'false')}
-            passHref={true}
-          >
+          <Link href="/auth" onClick={logout} passHref={true}>
             <StyledButton variant="text">Logout</StyledButton>
           </Link>
 

@@ -1,5 +1,3 @@
-import Tooltip from '@mui/material/Tooltip';
-import Image from 'next/image';
 import EditorLayout from './editor/EditorLayout';
 import NavBarLayout from './nav-bar/NavBarLayout';
 import ResumeHeader from './resume/components/ResumeHeader';
