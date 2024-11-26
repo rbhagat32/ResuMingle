@@ -1,10 +1,11 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { toast } from 'sonner';
 
 const Stripe = () => {
   const router = useRouter();
+  const payRef = useRef<HTMLButtonElement>(null);
   const [selectedMethod, setSelectedMethod] = useState('card');
 
   const paymentOptions = [
@@ -15,11 +16,20 @@ const Stripe = () => {
 
   const pay = () => {
     localStorage.setItem('premium', 'true');
-    toast.success('Payment successful');
-    router.push('/builder');
+    if (payRef.current) {
+      payRef.current.disabled = true;
+      payRef.current.innerText = 'Processing...';
+    }
+    setTimeout(() => {
+      toast.success('Payment successful');
+      router.push('/builder');
+    }, 6000);
   };
 
-  const cancel = () => {};
+  const cancel = () => {
+    toast.error('Payment cancelled');
+    router.push('/builder');
+  };
 
   return (
     <>
@@ -160,6 +170,7 @@ const Stripe = () => {
           </div>
 
           <button
+            ref={payRef}
             onClick={pay}
             className="mt-6 w-full bg-blue-600 text-white font-medium py-2 rounded-md hover:bg-blue-700 transition"
           >

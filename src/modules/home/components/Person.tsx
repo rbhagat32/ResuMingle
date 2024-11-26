@@ -2,32 +2,25 @@ import Image from 'next/image';
 
 const persons = [
   {
-    name: 'Sadanand Pai',
-    role: 'Frontend Engineer',
-    avatar: 'https://avatars.githubusercontent.com/u/12962887?v=4',
-    github: 'https://github.com/sadanandpai',
-    linkedin: 'https://www.linkedin.com/in/sadanandpai/',
+    name: 'Rishav',
+    role: '102203305',
+    avatar: '/about/rishav.jpg',
+    github: '',
+    linkedin: '',
   },
   {
-    name: 'Gopalakrishnan',
-    role: 'Frontend Engineer',
-    avatar: 'https://avatars.githubusercontent.com/u/22369081?v=4',
-    github: 'https://github.com/gopal1996',
-    linkedin: 'https://www.linkedin.com/in/gopal1996',
+    name: 'Raghav Bhagat',
+    role: '102203331',
+    avatar: '/about/raghav.jpg',
+    github: '',
+    linkedin: '',
   },
   {
-    name: 'Vivek G',
-    role: 'Product designer, UI developer',
-    avatar: 'https://avatars.githubusercontent.com/u/26523871?v=4',
-    github: 'https://github.com/yakshaG',
-    linkedin: 'https://www.linkedin.com/in/vivek-g-india',
-  },
-  {
-    name: 'Siva K',
-    role: 'Frontend Engineer',
-    avatar: 'https://avatars.githubusercontent.com/u/60533560?v=4',
-    github: 'https://github.com/siva-kannan3',
-    linkedin: 'https://www.linkedin.com/in/siva-kannan3/',
+    name: 'Daraspreet Singh',
+    role: '102203356',
+    avatar: '/about/daras.jpg',
+    github: '',
+    linkedin: '',
   },
 ];
 
@@ -53,13 +46,13 @@ export default function Person() {
     <>
       {persons.map((person) => (
         <PersonCard key={person.name}>
-          <Image
-            src={person.avatar}
-            alt={person.name}
-            className="rounded-full"
-            height="96"
-            width="96"
-          />
+          <div className="w-40 h-40 overflow-hidden">
+            <img
+              src={person.avatar}
+              alt={person.name}
+              className="rounded-full w-full h-full object-contain object-top"
+            />
+          </div>
           <p className="text-resume-800 mt-4 font-bold">{person.name}</p>
           <p className="text-resume-400 mb-6">{person.role}</p>
           <ProfileSocial github={person.github} linkedin={person.linkedin} />

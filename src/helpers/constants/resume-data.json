@@ -1,11 +1,11 @@
 {
   "basics": {
-    "name": "Jane Doe",
+    "name": "John Doe",
     "label": "Frontend Engineer",
     "image": "https://randomuser.me/api/portraits/men/1.jpg",
-    "email": "janedoe@email.com",
+    "email": "johndoe@email.com",
     "phone": "+91 9876543210",
-    "url": "https://github.com/rbhagat32/ResuMingle",
+    "url": "https://example.com",
     "summary": "I am a web developer having expertise in frontend development and exposure to back- end development. I design and develop web applications using the latest technologies to deliver the product with quality code.",
     "location": {
       "address": "",

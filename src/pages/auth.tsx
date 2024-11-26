@@ -90,6 +90,7 @@ const auth = () => {
                     <h1 className="text-xl text-resume-800">Username:</h1>
                     <input
                       required
+                      placeholder="newUser123"
                       type="text"
                       className="px-2 py-0.5 border-2 rounded-md border-resume-500"
                     />
@@ -99,6 +100,7 @@ const auth = () => {
                     <h1 className="text-xl text-resume-800">Email:</h1>
                     <input
                       required
+                      placeholder="example@gmail.com"
                       type="email"
                       className="px-2 py-0.5 border-2 rounded-md border-resume-500"
                     />
@@ -108,6 +110,7 @@ const auth = () => {
                     <h1 className="text-xl text-resume-800">Password:</h1>
                     <input
                       required
+                      placeholder="********"
                       type="password"
                       className="px-2 py-0.5 border-2 rounded-md border-resume-500"
                     />
@@ -117,6 +120,7 @@ const auth = () => {
                     <h1 className="text-xl text-resume-800">Confirm Password:</h1>
                     <input
                       required
+                      placeholder="********"
                       type="password"
                       className="px-2 py-0.5 border-2 rounded-md border-resume-500"
                     />
@@ -152,6 +156,7 @@ const auth = () => {
                     <h1 className="text-xl text-resume-800">Username/Email:</h1>
                     <input
                       required
+                      placeholder="example@gmail.com"
                       type="text"
                       className="px-2 py-0.5 border-2 rounded-md border-resume-500"
                     />
@@ -161,6 +166,7 @@ const auth = () => {
                     <h1 className="text-xl text-resume-800">Password:</h1>
                     <input
                       required
+                      placeholder="*********"
                       type="password"
                       className="px-2 py-0.5 border-2 rounded-md border-resume-500"
                     />

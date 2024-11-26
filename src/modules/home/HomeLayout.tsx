@@ -126,8 +126,7 @@ const HomeLayout = () => {
       >
         <h2 className="text-resume-800 text-3xl mb-2 text-center lg:text-left">About us</h2>
         <p className="text-resume-400 mb-8 text-center lg:text-left">
-          A bunch of developers and designers — who love to build open source projects and learn
-          along!
+          A bunch of developers — who love to build projects and learn along!
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <Person />
