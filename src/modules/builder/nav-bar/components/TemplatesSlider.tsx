@@ -8,8 +8,10 @@ import { AVAILABLE_TEMPLATES } from '@/helpers/constants';
 import { Global } from '@emotion/react';
 import Image from 'next/image';
 import { useTemplates } from '@/stores/useTemplate';
+import { toast } from 'sonner';
 
-export const TemplateSlider = () => {
+export const TemplateSlider = (props: any) => {
+  const isPremium = props.isPremium;
   const templateIndex = useTemplates((state) => state.activeTemplate.id);
 
   const targetElementRef = useRef<HTMLElement | null>(null);
@@ -36,6 +38,11 @@ export const TemplateSlider = () => {
   }, []);
 
   const onChangeTemplate = (templateId: string) => {
+    if (templateId === 'professional' && !isPremium) {
+      toast.error('Upgrade to premium to use this template');
+      return;
+    }
+
     useTemplates.getState().setTemplate(AVAILABLE_TEMPLATES[templateId]);
   };
 
@@ -95,6 +102,7 @@ export const TemplateSlide = ({
   thumbnail: string;
   onChangeTemplate: (id: string) => void;
 }) => {
+  console.log(id);
   return (
     <li className="splide__slide flex justify-center">
       <div

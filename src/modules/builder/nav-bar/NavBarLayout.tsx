@@ -7,7 +7,7 @@ import {
   useTechnologies,
   useTools,
 } from '@/stores/skills';
-import { ChangeEvent, useCallback, useRef, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { NavBarActions, NavBarMenu, StyledButton } from './atoms';
 import { Toast } from '@/helpers/common/atoms/Toast';
 import { AVAILABLE_TEMPLATES } from '@/helpers/constants';
@@ -26,10 +26,12 @@ import { PrintResume } from './components/PrintResume';
 import { TemplateSelect } from './components/TemplateSelect';
 import { ThemeSelect } from './components/ThemeSelect';
 import { toast } from 'sonner';
+import { useRouter } from 'next/router';
 
 const TOTAL_TEMPLATES_AVAILABLE = Object.keys(AVAILABLE_TEMPLATES).length;
 
 const NavBarLayout = () => {
+  const router = useRouter();
   const [openToast, setOpenToast] = useState(false);
   const fileInputRef = useRef(null);
 
@@ -123,6 +125,18 @@ const NavBarLayout = () => {
     toast.success('Logged Out Successfully!');
   };
 
+  const getPremium = () => {
+    router.push('/stripe');
+  };
+
+  const [isPremium, setIsPremium] = useState(false);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const premiumStatus = localStorage.getItem('premium') === 'true';
+      setIsPremium(premiumStatus);
+    }
+  }, []);
+
   return (
     <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 pl-5 pr-4 items-center shadow-level-8dp z-20 print:hidden">
       <Link href="/">
@@ -132,9 +146,14 @@ const NavBarLayout = () => {
         <NavBarMenu>
           <NavMenuItem
             caption={`Templates (${TOTAL_TEMPLATES_AVAILABLE})`}
-            popoverChildren={<TemplateSelect />}
+            popoverChildren={<TemplateSelect isPremium={isPremium} />}
           />
           <NavMenuItem caption="Colours" popoverChildren={<ThemeSelect />} />
+          {!isPremium && (
+            <StyledButton variant="outlined" onClick={getPremium}>
+              Get Premium
+            </StyledButton>
+          )}
         </NavBarMenu>
         <NavBarActions>
           <Link href="/auth" onClick={logout} passHref={true}>
